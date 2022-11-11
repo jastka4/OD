@@ -153,7 +153,7 @@ public class Main {
         int cycleCount = encryption.getCycleCount(periodicSequence);
         boolean primitive = cycleCount == encryption.getT();
 
-        System.out.println(periodicSequence);
+        System.out.println(Arrays.toString(periodicSequence));
         System.out.println(Arrays.toString(encryption.getStartingSequence()));
         System.out.println("Okres:" + cycleCount);
         System.out.println("Czy prymitywny: " + primitive);

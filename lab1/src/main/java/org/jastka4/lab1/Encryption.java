@@ -16,14 +16,6 @@ public class Encryption {
         this.t = countT();
     }
 
-    public Field getField() {
-        return field;
-    }
-
-    public int[] getPolynomial() {
-        return polynomial;
-    }
-
     public int[] getStartingSequence() {
         return startingSequence;
     }

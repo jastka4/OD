@@ -8,19 +8,12 @@ public class Menu {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    private List<Item> items;
+    private final List<Item> items;
 
     public Menu(final List<Item> items) {
         this.items = items;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(final List<Item> items) {
-        this.items = items;
-    }
 
     public void handleMenu() throws IOException, InterruptedException {
         int input = 1;
@@ -72,9 +65,9 @@ public class Menu {
     }
 
     public static class Item {
-        private int number;
-        private String text;
-        private Command command;
+        private final int number;
+        private final String text;
+        private final Command command;
         private boolean waitForConfirmation = false;
 
         public Item(final int number, final String text, final Command command) {

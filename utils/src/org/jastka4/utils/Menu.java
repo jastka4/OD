@@ -14,11 +14,6 @@ public class Menu {
         this.items = items;
     }
 
-    public static void waitForConfirmation(Item.Command command) throws IOException, InterruptedException {
-        command.execute();
-        SCANNER.next();
-    }
-
     public List<Item> getItems() {
         return items;
     }
@@ -40,7 +35,7 @@ public class Menu {
                 for (Item item : items) {
                     if (input == item.number && !(item.command instanceof Item.DoNothingCommand)) {
                         clearScreen();
-                        item.command.execute();
+                        execute(item.command, item.waitForConfirmation);
                     }
                 }
             } catch (IllegalStateException ex) {
@@ -57,6 +52,15 @@ public class Menu {
         System.out.print("Choose your option : ");
     }
 
+    private static void execute(Item.Command command, boolean waitForConfirmation) throws IOException, InterruptedException {
+        if (waitForConfirmation) {
+            command.execute();
+            SCANNER.next();
+        } else {
+            command.execute();
+        }
+    }
+
     private void clearScreen() throws IOException, InterruptedException {
         final String os = System.getProperty("os.name");
         if (os.contains("Windows")) {
@@ -71,11 +75,19 @@ public class Menu {
         private int number;
         private String text;
         private Command command;
+        private boolean waitForConfirmation = false;
 
         public Item(final int number, final String text, final Command command) {
             this.number = number;
             this.text = text;
             this.command = command;
+        }
+
+        public Item(int number, String text, Command command, boolean waitForConfirmation) {
+            this.number = number;
+            this.text = text;
+            this.command = command;
+            this.waitForConfirmation = waitForConfirmation;
         }
 
         public interface Command {

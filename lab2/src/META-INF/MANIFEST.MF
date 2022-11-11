@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: org.jastka4.lab2.Main

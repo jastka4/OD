@@ -25,25 +25,25 @@ public class Main {
         final Menu menu = new Menu(items);
 
         final List<Menu.Item> items1 = new ArrayList<>();
-        items1.add(new Menu.Item(1, "1: GF(2^2)", () -> zad1(FIELD_EXTENSIONS.get(0))));
-        items1.add(new Menu.Item(2, "2: GF(2^3)", () -> zad1(FIELD_EXTENSIONS.get(1))));
-        items1.add(new Menu.Item(3, "3: GF(2^4)", () -> zad1(FIELD_EXTENSIONS.get(2))));
+        items1.add(new Menu.Item(1, "1: GF(2^2)", () -> zad1(FIELD_EXTENSIONS.get(0)), true));
+        items1.add(new Menu.Item(2, "2: GF(2^3)", () -> zad1(FIELD_EXTENSIONS.get(1)), true));
+        items1.add(new Menu.Item(3, "3: GF(2^4)", () -> zad1(FIELD_EXTENSIONS.get(2)), true));
         items1.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items2 = new ArrayList<>();
-        items2.add(new Menu.Item(1, "1: GF(2^2)", () -> zad2(FIELD_EXTENSIONS.get(0))));
-        items2.add(new Menu.Item(2, "2: GF(2^3)", () -> zad2(FIELD_EXTENSIONS.get(1))));
-        items2.add(new Menu.Item(3, "3: GF(2^4)", () -> zad2(FIELD_EXTENSIONS.get(2))));
+        items2.add(new Menu.Item(1, "1: GF(2^2)", () -> zad2(FIELD_EXTENSIONS.get(0)), true));
+        items2.add(new Menu.Item(2, "2: GF(2^3)", () -> zad2(FIELD_EXTENSIONS.get(1)), true));
+        items2.add(new Menu.Item(3, "3: GF(2^4)", () -> zad2(FIELD_EXTENSIONS.get(2)), true));
         items2.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items3 = new ArrayList<>();
-        items3.add(new Menu.Item(1, "1: GF(2^2)", () -> zad3(FIELD_EXTENSIONS.get(0))));
-        items3.add(new Menu.Item(2, "2: GF(2^3)", () -> zad3(FIELD_EXTENSIONS.get(1))));
-        items3.add(new Menu.Item(3, "3: GF(2^4)", () -> zad3(FIELD_EXTENSIONS.get(2))));
+        items3.add(new Menu.Item(1, "1: GF(2^2)", () -> zad3(FIELD_EXTENSIONS.get(0)), true));
+        items3.add(new Menu.Item(2, "2: GF(2^3)", () -> zad3(FIELD_EXTENSIONS.get(1)), true));
+        items3.add(new Menu.Item(3, "3: GF(2^4)", () -> zad3(FIELD_EXTENSIONS.get(2)), true));
         items3.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items4 = new ArrayList<>();
-        items4.add(new Menu.Item(1, "1: GF(2^4)", () -> zad4(FIELD_EXTENSIONS.get(2))));
+        items4.add(new Menu.Item(1, "1: GF(2^4)", () -> zad4(FIELD_EXTENSIONS.get(2)), true));
         items4.add(new Menu.Item(2, "2: Powrot", new Menu.Item.DoNothingCommand()));
 
         final Menu menuZad1 = new Menu(items1);
@@ -55,7 +55,7 @@ public class Main {
         items.add(new Menu.Item(2, "2: Zadanie 2", menuZad2::handleMenu));
         items.add(new Menu.Item(3, "3: Zadanie 3", menuZad3::handleMenu));
         items.add(new Menu.Item(4, "4: Zadanie 4", menuZad4::handleMenu));
-        items.add(new Menu.Item(8, "8: Wyjscie", () -> System.exit(0)));
+        items.add(new Menu.Item(5, "5: Wyjscie", () -> System.exit(0)));
 
         return menu;
     }

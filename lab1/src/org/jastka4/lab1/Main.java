@@ -33,46 +33,42 @@ public class Main {
         final Menu menu = new Menu(items);
 
         final List<Menu.Item> items1 = new ArrayList<>();
-        items1.add(new Menu.Item(1, "1: GF(3)", () -> {
-            Menu.waitForConfirmation(() -> {
-                zad1(FIELDS.get(0));
-            });
-        }));
-        items1.add(new Menu.Item(2, "2: GF(7)", () -> zad1(FIELDS.get(1))));
-        items1.add(new Menu.Item(3, "3: GF(11)", () -> zad1(FIELDS.get(2))));
+        items1.add(new Menu.Item(1, "1: GF(3)", () -> zad1(FIELDS.get(0)), true));
+        items1.add(new Menu.Item(2, "2: GF(7)", () -> zad1(FIELDS.get(1)), true));
+        items1.add(new Menu.Item(3, "3: GF(11)", () -> zad1(FIELDS.get(2)), true));
         items1.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items2 = new ArrayList<>();
-        items2.add(new Menu.Item(1, "1: GF(3)", () -> zad2(FIELDS.get(0))));
-        items2.add(new Menu.Item(2, "2: GF(7)", () -> zad2(FIELDS.get(1))));
-        items2.add(new Menu.Item(3, "3: GF(11)", () -> zad2(FIELDS.get(2))));
+        items2.add(new Menu.Item(1, "1: GF(3)", () -> zad2(FIELDS.get(0)), true));
+        items2.add(new Menu.Item(2, "2: GF(7)", () -> zad2(FIELDS.get(1)), true));
+        items2.add(new Menu.Item(3, "3: GF(11)", () -> zad2(FIELDS.get(2)), true));
         items2.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items3 = new ArrayList<>();
-        items3.add(new Menu.Item(1, "1: GF(3)", () -> zad3(FIELDS.get(0))));
-        items3.add(new Menu.Item(2, "2: GF(7)", () -> zad3(FIELDS.get(1))));
-        items3.add(new Menu.Item(3, "3: GF(11)", () -> zad3(FIELDS.get(2))));
+        items3.add(new Menu.Item(1, "1: GF(3)", () -> zad3(FIELDS.get(0)), true));
+        items3.add(new Menu.Item(2, "2: GF(7)", () -> zad3(FIELDS.get(1)), true));
+        items3.add(new Menu.Item(3, "3: GF(11)", () -> zad3(FIELDS.get(2)), true));
         items3.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items4 = new ArrayList<>();
-        items4.add(new Menu.Item(1, "1: GF(3)", () -> zad4(FIELDS.get(0))));
-        items4.add(new Menu.Item(2, "2: GF(7)", () -> zad4(FIELDS.get(1))));
-        items4.add(new Menu.Item(3, "3: GF(11)", () -> zad4(FIELDS.get(2))));
+        items4.add(new Menu.Item(1, "1: GF(3)", () -> zad4(FIELDS.get(0)), true));
+        items4.add(new Menu.Item(2, "2: GF(7)", () -> zad4(FIELDS.get(1)), true));
+        items4.add(new Menu.Item(3, "3: GF(11)", () -> zad4(FIELDS.get(2)), true));
         items4.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items5 = new ArrayList<>();
-        items5.add(new Menu.Item(1, "1: GF(3)", () -> zad5(FIELDS.get(0))));
-        items5.add(new Menu.Item(2, "2: GF(7)", () -> zad5(FIELDS.get(1))));
-        items5.add(new Menu.Item(3, "3: GF(11)", () -> zad5(FIELDS.get(2))));
+        items5.add(new Menu.Item(1, "1: GF(3)", () -> zad5(FIELDS.get(0)), true));
+        items5.add(new Menu.Item(2, "2: GF(7)", () -> zad5(FIELDS.get(1)), true));
+        items5.add(new Menu.Item(3, "3: GF(11)", () -> zad5(FIELDS.get(2)), true));
         items5.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items6 = new ArrayList<>();
-        items6.add(new Menu.Item(1, "1: GF(2), x^4+x+1, {1, 0}", () -> zad6(ENCRYPTION_LAB_6.get(0))));
-        items6.add(new Menu.Item(2, "2: GF(3), x^2+x+2, {1, 0}", () -> zad6(ENCRYPTION_LAB_6.get(1))));
+        items6.add(new Menu.Item(1, "1: GF(2), x^4+x+1, {1, 0}", () -> zad6(ENCRYPTION_LAB_6.get(0)), true));
+        items6.add(new Menu.Item(2, "2: GF(3), x^2+x+2, {1, 0}", () -> zad6(ENCRYPTION_LAB_6.get(1)), true));
         items6.add(new Menu.Item(3, "3: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items7 = new ArrayList<>();
-        items7.add(new Menu.Item(1, "1: GF(2), x^10+x^3+1, {1, 0}", () -> zad7(ENCRYPTION_LAB_7)));
+        items7.add(new Menu.Item(1, "1: GF(2), x^10+x^3+1, {1, 0}", () -> zad7(ENCRYPTION_LAB_7), true));
         items7.add(new Menu.Item(2, "2: Powrot", new Menu.Item.DoNothingCommand()));
 
         final Menu menuZad1 = new Menu(items1);

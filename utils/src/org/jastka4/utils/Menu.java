@@ -14,6 +14,11 @@ public class Menu {
         this.items = items;
     }
 
+    public static void waitForConfirmation(Item.Command command) throws IOException, InterruptedException {
+        command.execute();
+        SCANNER.next();
+    }
+
     public List<Item> getItems() {
         return items;
     }
@@ -45,10 +50,6 @@ public class Menu {
         }
     }
 
-    public static void waitForConfirmation(Item.Command command) throws IOException, InterruptedException {
-        command.execute();
-        SCANNER.next();
-    }
     public void printMenu(List<Item> items) {
         for (Item item : items) {
             System.out.println(item.text);
@@ -83,7 +84,8 @@ public class Menu {
 
         public static class DoNothingCommand implements Command {
             @Override
-            public void execute() {}
+            public void execute() {
+            }
         }
     }
 }

@@ -15,18 +15,6 @@ public class Field {
         this.multiplicationTable = multiplication(p);
     }
 
-    public int getP() {
-        return p;
-    }
-
-    public List<List<Integer>> getAdditionTable() {
-        return additionTable;
-    }
-
-    public List<List<Integer>> getMultiplicationTable() {
-        return multiplicationTable;
-    }
-
     public static List<Integer> getMultiplicativeOrder(int p) {
         List<Integer> multiplicativeOrder = new ArrayList<>();
         for (int i = 1; i < p; i++) {
@@ -54,6 +42,18 @@ public class Field {
         }
 
         return primitiveElements;
+    }
+
+    public int getP() {
+        return p;
+    }
+
+    public List<List<Integer>> getAdditionTable() {
+        return additionTable;
+    }
+
+    public List<List<Integer>> getMultiplicationTable() {
+        return multiplicationTable;
     }
 
     private List<List<Integer>> addition(int p) {

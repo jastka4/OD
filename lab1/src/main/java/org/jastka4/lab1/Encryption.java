@@ -9,6 +9,14 @@ public class Encryption {
     final int[] startingSequence;
     final int t;
 
+    public Field getField() {
+        return field;
+    }
+
+    public int[] getPolynomial() {
+        return polynomial;
+    }
+
     public Encryption(Field field, int[] polynomial, int[] startingSequence) {
         this.field = field;
         this.polynomial = polynomial;
@@ -25,10 +33,10 @@ public class Encryption {
     }
 
     public int[] getPeriodicSequence() {
-        int[] s = Arrays.copyOf(startingSequence, 20 + startingSequence.length + 1);
         int m = startingSequence.length;
+        int[] s = Arrays.copyOf(startingSequence, 2 * t + m);
 
-        for (int j = 0; j < 20; j++) {
+        for (int j = 0; j < 2 * t; j++) {
             for (int i = m; i > 0; i--) {
                 s[j + m] = (s[j + m] + (field.getP() - polynomial[m - i]) * s[j + m - i]) % field.getP();
             }
@@ -63,7 +71,45 @@ public class Encryption {
         return out;
     }
 
+    public String printPolynomial() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = polynomial.length - 1; i >= 0; i--) {
+            if (i == 0) {
+                if (polynomial[i] != 0) {
+                    appendPlus(stringBuilder);
+                    stringBuilder.append(polynomial[i]);
+                }
+            } else if (i - 1 == 0) {
+                if (polynomial[i] != 0) {
+                    appendPlus(stringBuilder);
+                    appendCoefficient(stringBuilder, i);
+                    stringBuilder.append("x");
+                }
+            } else {
+                if (polynomial[i] != 0) {
+                    appendPlus(stringBuilder);
+                    appendCoefficient(stringBuilder, i);
+                    stringBuilder.append("x^").append(i);
+                }
+            }
+        }
+
+        return stringBuilder.toString();
+    }
+
     private int countT() {
         return (int) (Math.pow(field.getP(), startingSequence.length) - 1);
+    }
+
+    private void appendCoefficient(StringBuilder stringBuilder, int i) {
+        if (polynomial[i] != 1) {
+            stringBuilder.append(polynomial[i]);
+        }
+    }
+
+    private static void appendPlus(StringBuilder stringBuilder) {
+        if (!stringBuilder.isEmpty()) {
+            stringBuilder.append("+");
+        }
     }
 }

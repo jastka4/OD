@@ -16,11 +16,12 @@ public class Main {
             new Field(11)
     );
     private static final List<Encryption> ENCRYPTION_LAB_6 = Arrays.asList(
+            new Encryption(new Field(2), new int[]{1, 1, 0, 0, 1}, new int[]{1, 0, 0, 0}),
             new Encryption(new Field(3), new int[]{2, 1, 1}, new int[]{1, 0}),
-            new Encryption(new Field(2), new int[]{1, 1, 0, 0, 1}, new int[]{1, 0})
+            new Encryption(new Field(3), new int[]{1, 2, 1}, new int[]{1, 0})
     );
     private static final Encryption ENCRYPTION_LAB_7 = new Encryption(
-            new Field(2), new int[]{1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1}, new int[]{1, 0}
+            new Field(2), new int[]{1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1}, new int[]{1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     );
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -63,9 +64,10 @@ public class Main {
         items5.add(new Menu.Item(4, "4: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items6 = new ArrayList<>();
-        items6.add(new Menu.Item(1, "1: GF(2), x^4+x+1, {1, 0}", () -> zad6(ENCRYPTION_LAB_6.get(0)), true));
+        items6.add(new Menu.Item(1, "1: GF(2), x^4+x+1, {1, 0, 0, 0}", () -> zad6(ENCRYPTION_LAB_6.get(0)), true));
         items6.add(new Menu.Item(2, "2: GF(3), x^2+x+2, {1, 0}", () -> zad6(ENCRYPTION_LAB_6.get(1)), true));
-        items6.add(new Menu.Item(3, "3: Powrot", new Menu.Item.DoNothingCommand()));
+        items6.add(new Menu.Item(3, "2: GF(3), x^2+2x+1, {1, 0}", () -> zad6(ENCRYPTION_LAB_6.get(2)), true));
+        items6.add(new Menu.Item(4, "3: Powrot", new Menu.Item.DoNothingCommand()));
 
         final List<Menu.Item> items7 = new ArrayList<>();
         items7.add(new Menu.Item(1, "1: GF(2), x^10+x^3+1, {1, 0}", () -> zad7(ENCRYPTION_LAB_7), true));
@@ -108,43 +110,52 @@ public class Main {
     }
 
     private static void zad2(Field field) {
-        List<Integer> additionReverse = new ArrayList<>();
+        System.out.println("G(" + field.getP() + ")");
 
+        System.out.println("Elementy przeciwne:");
+        int rowNumber = 0;
         for (List<Integer> integers : field.getAdditionTable()) {
             for (int j = 0; j < integers.size(); j++) {
                 if (0 == integers.get(j)) {
-                    additionReverse.add(j);
+                    System.out.println(rowNumber + " -> " + j);
                 }
             }
+            rowNumber++;
         }
 
-        System.out.println(additionReverse);
     }
 
     private static void zad3(Field field) {
-        List<Integer> multiplicationReverse = new ArrayList<>();
+        System.out.println("G(" + field.getP() + ")");
 
+        System.out.println("Elementy odwrotne:");
+        int rowNumber = 0;
         for (List<Integer> integers : field.getMultiplicationTable()) {
             for (int j = 0; j < integers.size(); j++) {
                 if (1 == integers.get(j)) {
-                    multiplicationReverse.add(j);
+                    System.out.println(rowNumber + " -> " + j);
                 }
             }
+            rowNumber++;
         }
-
-        System.out.println(multiplicationReverse);
     }
 
     private static void zad4(Field field) {
-        List<Integer> multiplicativeOrder = Field.getMultiplicativeOrder(field.getP());
+        System.out.println("G(" + field.getP() + ")");
 
-        System.out.println(multiplicativeOrder);
+        System.out.println("Rzedy multiplikatywne:");
+        List<Integer> order = Field.getMultiplicativeOrder(field.getP());
+        for (int i = 0; i < order.size(); i++) {
+            System.out.println(i + 1 + " - rzad multyplikatywny " + order.get(i));
+        }
     }
 
     private static void zad5(Field field) {
+        System.out.println("G(" + field.getP() + ")");
+
         List<Integer> primitiveElements = Field.getPrimitiveElements(field.getP());
 
-        System.out.println(primitiveElements);
+        System.out.println("Elementy pierwotne: " + primitiveElements);
     }
 
     private static void zad6(Encryption encryption) {
@@ -153,21 +164,27 @@ public class Main {
         int cycleCount = encryption.getCycleCount(periodicSequence);
         boolean primitive = cycleCount == encryption.getT();
 
-        System.out.println(Arrays.toString(periodicSequence));
-        System.out.println(Arrays.toString(encryption.getStartingSequence()));
-        System.out.println("Okres:" + cycleCount);
-        System.out.println("Czy prymitywny: " + primitive);
+        System.out.println("G(" + encryption.getField().getP() + ")");
+        System.out.println("Wielomian: " + encryption.printPolynomial());
+        System.out.println("Sekwencja poczatkowa: " + Arrays.toString(encryption.getStartingSequence()));
+        System.out.println("Sekwencja okresowa: " + Arrays.toString(Arrays.stream(periodicSequence).limit(cycleCount).toArray()));
+        System.out.println("Okres: " + cycleCount);
+        System.out.println("Czy pierwotna: " + primitive);
     }
 
     private static void zad7(Encryption encryption) {
         int[] periodicSequence = encryption.getPeriodicSequence();
+        String text = "testingAbc";
 
-        String encrypted = new String(encryption.xorWithKey("testingAbc".getBytes(StandardCharsets.UTF_8),
+        String encrypted = new String(encryption.xorWithKey(text.getBytes(StandardCharsets.UTF_8),
                 Arrays.toString(periodicSequence).getBytes(StandardCharsets.UTF_8)));
         String decrypted = new String(encryption.xorWithKey(encrypted.getBytes(StandardCharsets.UTF_8),
                 Arrays.toString(periodicSequence).getBytes(StandardCharsets.UTF_8)));
 
-        System.out.println(encrypted);
-        System.out.println(decrypted);
+        System.out.println("G(" + encryption.getField().getP() + ")");
+        System.out.println("Wielomian: " + encryption.printPolynomial());
+        System.out.println("Tekst bazowy: " + text);
+        System.out.println("Zaszyfrowany: " + encrypted);
+        System.out.println("Odszyfrowany: " + decrypted);
     }
 }

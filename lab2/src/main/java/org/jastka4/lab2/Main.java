@@ -73,14 +73,17 @@ public class Main {
         int x = 2, y = 1;
 
         System.out.println("G(2^" + fieldExtension.getM() + ")");
+        System.out.println("x = 2, y = 1");
+        System.out.println();
+
 
         System.out.println("Dodawanie:");
-        System.out.println("x = 2, y = 1");
-        System.out.println(fieldExtension.S(x, y));
+        System.out.println("x + y = " + fieldExtension.S(x, y));
+
+        System.out.println();
 
         System.out.println("Mnozenie:");
-        System.out.println("x = 2, y = 1");
-        System.out.println(fieldExtension.P(x, y));
+        System.out.println("x * y = " + fieldExtension.P(x, y));
     }
 
     private static void zad3(FieldExtension fieldExtension) {
@@ -91,6 +94,8 @@ public class Main {
             System.out.println(row);
         }
 
+        System.out.println();
+
         System.out.println("Tabliczka mnozenia:");
         for (List<Integer> row : fieldExtension.zechMultiplicationMatrix()) {
             System.out.println(row);
@@ -98,9 +103,11 @@ public class Main {
     }
 
     private static void zad4(FieldExtension fieldExtension) {
+        System.out.println("G(2^" + fieldExtension.getM() + ")");
         int x1 = 8, x2 = 15, x3 = 14, x4 = 12;
 //        int x1 = 4, x2 = 7, x3 = 13, x4 = 10;
 //        int x1 = 2, x2 = 3, x3 = 5, x4 = 9;
+        System.out.println("Wielomian czwartego stopnia:");
         System.out.println(fieldExtension.getPolynomial(x1, x2, x3, x4));
     }
 }

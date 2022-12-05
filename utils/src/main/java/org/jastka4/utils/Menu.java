@@ -48,6 +48,7 @@ public class Menu {
     private static void execute(Item.Command command, boolean waitForConfirmation) throws IOException, InterruptedException {
         if (waitForConfirmation) {
             command.execute();
+            System.out.print("\nChoose 0 to get back: ");
             SCANNER.next();
         } else {
             command.execute();

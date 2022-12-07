@@ -64,7 +64,7 @@ and opens the file for reading. */
         for (i = 0; i <= 47; i++) fscanf(infile, "%d", &(ipc2[i]));
         fclose(infile);
     }
-    if ((n == 0)) {
+    if (n == 0) {
         for (j = 0; j <= 55; j++) {
             glicd[j] = key[ipc1[j] - 1];
         }
@@ -218,7 +218,7 @@ void BINTOHEX(gl64array jotput)
 {
     int i, j, inte, weight;
 
-    printf("DeCipher hex: ");
+    printf("Decipher hex: ");
     for (i = 0; i <= 15; i++) {
         inte = 0;
         weight = 1;   /* Convertion binary to int. */
@@ -321,14 +321,14 @@ int main() {   /* Main program */
     cyflg = 1;
     desflg = 1;
 
-    printf("DeCiphering is running...");
+    printf("Deciphering is running...");
     d_des(inpt, key, jotput, desflg, ip, ipm, ksflg, ipc1, ipc2, glicd, cyflg, iet, ipp, is, ibin);
     printf("Done.\n");
     printf("\n");
-    std::cout << "DeCipher ASCII: " << BINTOTEXT(jotput) << std::endl;
+    std::cout << "Decipher ASCII: " << BINTOTEXT(jotput) << std::endl;
     BINTOHEX(jotput);
     printf("\n");
-    printf("DeCipher bin: ");
+    printf("Decipher bin: ");
     for (i = 0; i <= 63; i++) printf("%d", jotput[i]);
     printf("\n");
     printf("\n");

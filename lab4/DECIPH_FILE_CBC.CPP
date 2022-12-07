@@ -219,7 +219,7 @@ void BINTOHEX(gl64array jotput)
 {
     int i, j, inte, weight;
 
-    printf("DeCipher hex: ");
+    printf("Decipher hex: ");
     for (i = 0; i <= 15; i++) {
         inte = 0;
         weight = 1;   /* Convertion binary to int. */

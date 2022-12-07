@@ -216,7 +216,7 @@ void BINTOHEX(gl64array jotput)
 {
     int i, j, inte, weight;
 
-    printf("DeCipher hex: ");
+    printf("Decipher hex: ");
     for (i = 0; i <= 15; i++) {
         inte = 0;
         weight = 1;   /* Convertion binary to int. */
@@ -287,13 +287,13 @@ int main() {   /* Main program */
     ksflg = 1;
     cyflg = 1;
     desflg = 1;
-    printf("DeCiphering is running...");
+    printf("Deciphering is running...");
     d_des(inpt, key, jotput, desflg, ip, ipm, ksflg, ipc1, ipc2, glicd, cyflg, iet, ipp, is, ibin);
     printf("Done.\n");
     printf("\n");
     BINTOHEX(jotput);
     printf("\n");
-    printf("DeCipher bin: ");
+    printf("Decipher bin: ");
     for (i = 0; i <= 63; i++) printf("%d", jotput[i]);
     printf("\n");
     printf("\n");

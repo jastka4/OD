@@ -65,7 +65,7 @@ and opens the file for reading. */
         for (i = 0; i <= 47; i++) fscanf(infile, "%d", &(ipc2[i]));
         fclose(infile);
     }
-    if ((n == 0)) {
+    if (n == 0) {
         for (j = 0; j <= 55; j++) {
             glicd[j] = key[ipc1[j] - 1];
         }
@@ -219,7 +219,7 @@ void BINTOHEX(gl64array jotput)
 {
     int i, j, inte, weight;
 
-    printf("DeCipher hex: ");
+    printf("Decipher hex: ");
     for (i = 0; i <= 15; i++) {
         inte = 0;
         weight = 1;   /* Convertion binary to int. */

@@ -252,7 +252,7 @@ int main() {   /* Main program */
     printf("\n");
     printf("*** PROGRAM CIPHER ***\n");
     printf("\n");
-    printf("Type plaintext <16 ASCII characters [0..f] + ENTER>:\n");
+    printf("Type plaintext <16 hexadecimal characters [0..f] + ENTER>:\n");
     for (i = 0; i <= 15; i++) htext[i] = 48;
     htext[16] = 0;
     printf("Text hex: \n");

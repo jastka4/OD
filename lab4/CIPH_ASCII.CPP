@@ -266,7 +266,7 @@ int main() {   /* Main program */
     printf("\n");
     printf("*** PROGRAM CIPHER ***\n");
     printf("\n");
-    printf("Type plaintext <8 ASCII characters [0..f] + ENTER>:\n");
+    printf("Type plaintext <8 ASCII characters + ENTER>:\n");
     std::cin >> inputText;
     TEXTTOHEX(inputText, outputText);
 
@@ -282,7 +282,7 @@ int main() {   /* Main program */
 
     printf("\n");
     printf("\n");
-    printf("Type Key <8 ASCII characters [0..f] + ENTER>:\n");
+    printf("Type Key <8 ASCII characters + ENTER>:\n");
     printf("Key ASCII:\n");
     std::cin >> inputText;
     TEXTTOHEX(inputText, outputText);
